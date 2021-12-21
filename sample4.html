@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS SAMPLE1!</title>
+    <!-- подключаем Vue.js из CDN  -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <!-- элемент с идентификатором (шаблон) -->
+    <div id="app">
+        <!-- использование интерполяции для отображения данных (model) из опции data -->        
+        <!-- двустороннее связывание данных - директива v-model -->
+        Сообщение: <input type="text" v-model="car.name" >
+        {{car.name}}
+    </div>
+    <script>
+        // new Vue(/* опции */) - создаем экземпляр Vue 
+        let vm = new Vue({
+            // опция el позволяет выполнить привязку шаблона 	
+            el: "#app", // селектор классов 
+            // опция data (данные которые мы используем для отображени с помощью шаблолна)
+            data: {
+                message: "Привет, Vue!",
+                price: 200, 
+                car: {name: "ZZZZZ"}
+            },
+            // методы 
+            methods: {
+                // метод использует св-во price
+                getPrice: function () {
+                    // для доступа к данным из модели данных используем this
+                    console.log("getPrice invoked!!!");                    
+                    return this.price; 
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

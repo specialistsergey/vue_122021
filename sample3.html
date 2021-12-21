@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS SAMPLE1!</title>
+    <!-- подключаем Vue.js из CDN  -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <!-- элемент с идентификатором (шаблон) -->
+    <div class="app">
+        <!-- использование интерполяции для отображения данных (model) из опции data -->        
+        <h1> {{manager.lastName}}</h1>
+        <h4>{{manager.firstName}}</h4>
+        <h4>{{manager.age}}</h4>
+        <div>{{getFullAboutManager()}}</div>
+    </div>
+    <script>
+        // new Vue(/* опции */) - создаем экземпляр Vue 
+        let vm = new Vue({
+            // опция el позволяет выполнить привязку шаблона 	
+            el: ".app", // селектор классов 
+            // опция data (данные которые мы используем для отображени с помощью шаблолна)
+            data: {
+                message: "Привет, Vue!",
+                price: 200,
+                price1: 409,
+                car: {name: "FFFFFFFFFF", model: "ZZZ"},
+                manager: {
+                    lastName: 'Petrov',
+                    firstName: 'Semen',
+                    age: 25
+                }
+            },
+            // методы 
+            methods: {
+                // метод использует св-во price
+                getPrice: function () {
+                    // для доступа к данным из модели данных используем this
+                    console.log("getPrice invoked!!!");                    
+                    return this.price; 
+                },
+                getFullMessage: function (){
+                    console.log("getFullMessage invoked!!!");
+                    return this.message + "!!!"; 
+                },
+                getFullCarInfo: function(){
+                    return this.car.name + ' ' + this.car.model; 
+                },
+                getFullAboutManager: function(){
+                    return this.manager.firstName + ' ' + this.manager.lastName + ', ' + this.manager.age
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
